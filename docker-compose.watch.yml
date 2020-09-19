@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  api:
+    image: hello-dotnet-api-img:watch
+    build:
+      context: .
+      dockerfile: ./Dockerfile.watch
+    volumes:
+      - .:/app
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+    networks:
+      - hello-dotnet-api-watch-network
+
+networks: 
+  hello-dotnet-api-watch-network:
+    driver: bridge
